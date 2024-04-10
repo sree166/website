@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb In Boston Analysis</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <h1> Airbnb In Boston Analysis</h1>
+
+    <h3>Introduction</h3>
+
+    <p>Our central research question is to explore and analyze different features of highly rated airbnb’s in Boston.
+        Our working definition of highly rated airbnb’s would be airbnb’s that have an overall rating of 4 stars and
+        above. Airbnb as a business has been under a lot of pressure lately regarding their business practice of
+        displacing the native population from their neighborhoods. Due to this, increased housing prices and the
+        displacement of minority populations has caused some state legislation to ban airbnb. Boston has been one city
+        that has been considering this alternative. Disrupting the airbnb market would be a huge win for residents of
+        the city, but this begs the question– how will this ban of the majority of airbnb properties affect the overall
+        housing market in one of the most expensive cities to live in? Our analysis will uncover what features and
+        prices influence what is considered a highly rated airbnb and how these different airbnb’s influence the housing
+        market. We hope to provide interesting data visualizations that show what area these airbnb’s are in and how
+        these locations are suffering from the negative impact of airbnb’s.
+    </p>
+
+
+    <p>To learn more about the Airbnb and what people value in them,
+        you can visit <a
+            href="https://vtechworks.lib.vt.edu/server/api/core/bitstreams/bcfb4b5b-57cc-4c02-b04a-b1ff1e00666a/content">What
+            do guests value most in Airbnb accommodations? </a> or explore
+        analysis reports from
+        <a
+            href="https://www.sciencedirect.com/science/article/pii/S1051137717300876?casa_token=BEa1GvFqZ3MAAAAA:B16cepwmcXtrKBh1DP8riIN5763AJQvupsb3QgIqxN5ilVR_C3oSNjPwV7dzPE4vlIr36vR9Tg">Journal
+            of Housing Economics</a>.
+    </p>
+
+    <h3>Introduction to the data</h3>
+
+    <p> The dataset we chose is sourced from Kaggle, and provides information about the listing activity of homestays in
+        Boston, MA, collected since 2008 through the Airbnb platform. The dataset is specifically focused on the Boston
+        area and contains a total of 3,585 rows and 95 columns. The detail information about some of the key property characteristics
+        are listed in the following table:</p>
+
+    <div class="center">
+        <table class="tg">
+            <thead>
+                <tr>
+                    <th class="tg-0lax"><b>Variable Name</b></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tg-0lax">Pricing</td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">Availability
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">Location
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">Review score 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">Cancelation Policy</td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">Property type
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">Room type
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">Number of bedrooms and bathrooms
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">Amenities</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <p>Meanwhile, we also believe that the geographical
+        information is important when evaluating the unemployment
+        rate. Therefore, we also make use of geographical information
+        on <a href="https://www.naturalearthdata.com/downloads/">Natural Earth</a>.
+        The website provides the geographical information for making maps for US states.
+    </p>
+
+    <p>To make a better data visualization, we remove the Alaska and Hawaii
+        from the data. Following is an interactive map for the
+        lower 48 states in US. User can zoom in the map. The color
+        indicates the unemployment rate for each state. When click any
+        state, other social factors will be revealed for the state. </p>
+
+    <div class='center'>
+        <iframe src="map.html" width="80%" height="400px" frameborder="0"></iframe>
+    </div>
+
+    <p>In general, west coast states tend to have higher
+        unemployment rate. On the east coast, West virginia
+        and New York state tend to have higher unemplyment rate
+        than the others. In the south, Mississippi and Louisiana
+        are the ones with the much higher unemplyment rate.
+    </p>
+
+    <h3>Overview of the Unemployment rate</h3>
+
+    <div class='container'>
+        <div class='image'>
+            <!-- <iframe src="histogram/index.html" width="100%" height="400px" frameborder="0"></iframe>-->
+            <iframe src="histogram/finish.png" width="100%" height="400px" frameborder="0"></iframe>
+        </div>
+        <div class='text'>
+            <p> First, we present an overview of the unemployment rate
+                for all 50 states. Alaska is the one with the
+                highest unemployment rate, which may due to the seasonal
+                business in the state. The effectiveness of labor market
+                policies and governance structures can influence unemployment
+                rates. Washington, D.C., being the seat of government, may
+                experience fluctuations in employment related to government
+                spending and policies. Mississippi and Louisiana have economies
+                that are heavily reliant on sectors such as agriculture,
+                manufacturing, and energy. Economic downturns or fluctuations
+                in these industries can impact employment opportunities.
+                Connecticut, South Dakota and Virginia have the lowest
+                unemplyment rate. These states often have diverse economies
+                with strong sectors such as technology, healthcare, finance,
+                and tourism. A diverse economy can provide more resilience to
+                economic downturns.
+            </p>
+        </div>
+    </div>
+
+    <h3> The relationship between unemployment rate and other social factors</h3>
+
+    <div class='container'>
+        <div class='text'>
+            <p>Moreover, we also want to examine the relationship between
+                unemployment rate and other social factors in the data. All
+                features are numerical thus we firts create a correlation
+                plot to examine whether there are linear relationship between
+                unemployment rate with other social factors. Notice that if
+                the correlation is small, it only means that there is no potential
+                linear relationship between two features.
+            </p>
+            <p>
+                Based on the correlation plot, among all the features, poverty
+                has the strongest correlation with the unemployment rate since
+                they are both related to the economics. The percentage of single
+                parents is the second important feature which inidicates the
+                stability of family is also strongly related to the job market.
+                The increase of unemployment rate may also related to the increase
+                of violent crime and murder rate but has a negative relationship
+                with education indicators, like the percentage of people who go to
+                high school and college. The only variable that has no direct linear
+                relation with the unemployment rate is Metropolitan, which means the
+                percent of residents living in a metropolitan area.
+            </p>
+        </div>
+        <div class='image'>
+            <img src="correlation_plot.png" width="100%" height="500px" frameborder="0"></img>
+        </div>
+    </div>
+
+    <p>We have also create an interactive scatter plot so that
+        our users can select a couple of states within
+        a certain range of unemployment rate and to see how the
+        other factors may be related here.
+    </p>
+
+    <div class='center'>
+        <iframe src="scatter.html" width="85%" height="550px" frameborder="0"></iframe>
+    </div>
+
+    <h3>Compare MA to the other states</h3>
+
+    <p>
+        Since we are in MA, thus we want to take a closer look between
+        MA and other states. We create the following interactive plot
+        such that user can choose another state to compare with MA and
+        show the bar plot on each factors.
+    </p>
+
+    <div class='center'>
+        <iframe src="summary.html" width="95%" height="300px" frameborder="0"></iframe>
+    </div>
+
+    <h3>Summary and additional work</h3>
+
+    <p>
+        In this visualization analysis, we try to explore the US
+        unemployment rate across states. We also examine the relation
+        between unemployment rate and other social factors.
+    </p>
+    <p>
+        Unfortunately, this is the 2010 data thus may be different
+        than the current economics status. Also, unemployment rate
+        may fluctuate seasonally thus adding a time series analysis
+        will be more informative.
+    </p>
+
+    <p>If you are interested in the project and want to share more
+        opinions or resource about the project, please contact:
+        Xiaoyi Yang (xiaoy.yang@northeastern.edu)
+    </p>
+
+</body>
+
+</html>
