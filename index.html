@@ -42,7 +42,8 @@
 
     <p> The dataset we chose is sourced from Kaggle, and provides information about the listing activity of homestays in
         Boston, MA, collected since 2008 through the Airbnb platform. The dataset is specifically focused on the Boston
-        area and contains a total of 3,585 rows and 95 columns. The detail information about some of the key property characteristics
+        area and contains a total of 3,585 rows and 95 columns. The detail information about some of the key property
+        characteristics
         are listed in the following table:</p>
 
     <div class="center">
@@ -65,7 +66,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="tg-0lax">Review score 
+                    <td class="tg-0lax">Review score
                     </td>
                 </tr>
                 <tr>
@@ -89,6 +90,31 @@
             </tbody>
         </table>
     </div>
+
+    <h3>Relationship Between Property Type and Rating</h3>
+
+    <div class='container'>
+        <div class='image'>
+            <!-- <iframe src="histogram/index.html" width="100%" height="400px" frameborder="0"></iframe>-->
+            <iframe src="histogram/histogram.png" width="100%" height="400px" frameborder="0"></iframe>
+        </div>
+        <div class='text'>
+            <p>
+                The bar chart reveals insightful patterns about how different types of properties are rated on average.
+                It's notable that properties where the entire floor is included, perhaps indicating more spacious or
+                exclusive accommodations, tend to receive the highest mean ratings. On the other hand, dorm-style
+                accommodations, which often offer shared spaces and more basic amenities, tend to have the lowest mean
+                ratings.
+
+                While there is a discernible difference between the highest and lowest mean ratings, it's interesting to
+                note that the contrast isn't as significant as one might expect. This suggests that while certain types
+                of properties may be inherently more appealing to guests, factors such as the overall quality of
+                service, cleanliness, communication, and amenities provided can significantly influence ratings across
+                different property types.
+            </p>
+        </div>
+    </div>
+
     
     <p>Meanwhile, we also believe that the geographical
         information is important when evaluating the unemployment
@@ -114,34 +140,7 @@
         are the ones with the much higher unemplyment rate.
     </p>
 
-    <h3>Overview of the Unemployment rate</h3>
-
-    <div class='container'>
-        <div class='image'>
-            <!-- <iframe src="histogram/index.html" width="100%" height="400px" frameborder="0"></iframe>-->
-            <iframe src="histogram/finish.png" width="100%" height="400px" frameborder="0"></iframe>
-        </div>
-        <div class='text'>
-            <p> First, we present an overview of the unemployment rate
-                for all 50 states. Alaska is the one with the
-                highest unemployment rate, which may due to the seasonal
-                business in the state. The effectiveness of labor market
-                policies and governance structures can influence unemployment
-                rates. Washington, D.C., being the seat of government, may
-                experience fluctuations in employment related to government
-                spending and policies. Mississippi and Louisiana have economies
-                that are heavily reliant on sectors such as agriculture,
-                manufacturing, and energy. Economic downturns or fluctuations
-                in these industries can impact employment opportunities.
-                Connecticut, South Dakota and Virginia have the lowest
-                unemplyment rate. These states often have diverse economies
-                with strong sectors such as technology, healthcare, finance,
-                and tourism. A diverse economy can provide more resilience to
-                economic downturns.
-            </p>
-        </div>
-    </div>
-
+    
     <h3> The relationship between unemployment rate and other social factors</h3>
 
     <div class='container'>
@@ -196,24 +195,23 @@
         <iframe src="summary.html" width="95%" height="300px" frameborder="0"></iframe>
     </div>
 
-    <h3>Summary and additional work</h3>
+    <h3>Summary</h3>
 
     <p>
-        In this visualization analysis, we try to explore the US
-        unemployment rate across states. We also examine the relation
-        between unemployment rate and other social factors.
-    </p>
-    <p>
-        Unfortunately, this is the 2010 data thus may be different
-        than the current economics status. Also, unemployment rate
-        may fluctuate seasonally thus adding a time series analysis
-        will be more informative.
+        In this visualization analysis, we what features and prices influence what is considered a highly rated airbnb
+        and how these different airbnb’s influence the housing market. Out data visualizations that show what area these
+        airbnb’s are in and how these locations are suffering from the negative impact of airbnb’s.
+
+    <ul> <h3>Conclusion</h3>
+        <li>Most Airbnbs are located in the Back Bay and Kenmore regions.</li>
+        <li>Airbnbs in the Roxbury region might contribute to rent price increases.</li>
+        <li>There are fewer Airbnbs as you move away from the city.</li>
+        <li>Higher ratings of Airbnbs correlate with more private rental spaces.</li>
+        <li>There is a lot of variability in prices concerning cancellation policies, property types, and the number of
+            accommodates.</li>
+    </ul>
     </p>
 
-    <p>If you are interested in the project and want to share more
-        opinions or resource about the project, please contact:
-        Xiaoyi Yang (xiaoy.yang@northeastern.edu)
-    </p>
 
 </body>
 
