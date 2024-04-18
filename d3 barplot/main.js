@@ -1,12 +1,12 @@
 //Define data
-const air = d3.csv("listings.csv");
+const air = d3.csv("listings1.csv");
 
 air.then(function(data) {
   // Convert string values to numbers
   data.forEach(function(d) {
-      d.accommodates = +d.accommodates;
+      d.accommodations = +d.accommodations;
   });
-  data.sort((a, b) => b.accommodates - a.accommodates);
+  data.sort((a, b) => b.accommodations - a.accommodations);
 
 // Create SVG
 let 
@@ -16,8 +16,8 @@ let
 let margin = {
   top: 40,
   bottom: 30,
-  left: 45,
-  right: 30
+  left: 50,
+  right: 50
 };
 
 let svg = d3
@@ -73,12 +73,23 @@ let bar = svg
   .enter()
   .append('rect')
     .attr('x', d => xScale(d.property_type))
-    .attr('y', d => yScale(d.accommodates))
+    .attr('y', d => yScale(d.accommodations))
     .attr('width', xScale.bandwidth())
     .attr('height', d => 
-          height - margin.bottom - yScale(d.accommodates)
+          height - margin.bottom - yScale(d.accommodations)
       )
       .attr('fill', 'steelblue');
+
+//tooltip:
+var tooltip = d3.select("#barplot")
+      .append("div")
+      .style("opacity", 0)
+      .attr("class", "tooltip")
+      .style("background-color", "white")
+      .style("border", "solid")
+      .style("border-width", "1px")
+      .style("border-radius", "5px")
+      .style("padding", "10px")
 
 //Interaction
 bar
@@ -90,6 +101,7 @@ bar
         .style('fill', 'red');
     })
 
+    
     .on('mouseout', function(d) {
       d3.select(this)
         .transition()
