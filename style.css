@@ -2,8 +2,13 @@ body {
     width: 1000px;
     margin: 0 auto;
     padding: 0 20px 20px 20px;
-    border: 3px solid black;
+    border: 3px solid #022d7d;
+    background-color: #FFFFFF;
   }
+
+html {
+    background-color: #0E86FB;
+}
 
 h1 {
     margin: 0;
@@ -64,4 +69,16 @@ h1 {
 .text {
     flex: 1; /* Allow text to grow to fill remaining space */
 }
+
+.column {
+    float: left;
+    width: 45%;
+    padding: 5px;
+  }
+
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 
