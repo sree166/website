@@ -138,18 +138,114 @@
         </div>
     </div>
 
-    <h3>Relationship Between Property Type and Number of Accommodates</h3>
+    <h3>Property Type vs. Number of Accommodates</h3>
 
-    <p>We also made an interactive graph using D3 that shows the relationship between the property type of the 
-        Airbnb and the maximum number of accommodates staying in that property. We hoped to discover what kinds of 
-        property types are suitable for a larger or smaller number of accommodates.
-        The interactive component is that hovering the mouse over one bar of the graph will result in
-        a part of that bar changing color, showing the number of accommodates corresponding to the property 
-        type for each data point.
-    </p>
+    <div class='container'>
+        <div id="barplot"></div>
 
-    <div class='center'>
-        <a href="d3 barplot/barplot.html">Property type vs. Number of Accomodates</a>
+         <script>
+         //Define data
+         const air = d3.csv("listings1.csv");
+
+         air.then(function(data) {
+            // Convert string values to numbers
+            data.forEach(function(d) {
+                d.accommodations = +d.accommodations;
+            });
+            data.sort((a, b) => b.accommodations - a.accommodations);
+            
+            // Create SVG
+            let 
+            width = 1000,
+            height = 600;
+  
+            let margin = {
+            top: 40,
+            bottom: 30,
+            left: 50,
+            right: 55
+            };
+        
+            let svg = d3
+                .select('#barplot')
+                .append('svg')
+                 .attr('width', width)
+                 .attr('height', height)
+                .style('background', '#e9f7f2');
+                
+                
+            // Define Scales
+            let yScale = d3.scaleLinear()
+                .domain([0, 20])
+                .range([height - margin.bottom, margin.top]);
+
+            let xScale = d3.scaleBand()
+                .domain(data.map(d => d.property_type))
+                .range([margin.left, width - margin.right])
+                .padding(0.5);
+                
+                
+            //Draw Axes
+            let yAxis = svg
+                .append('g')
+                .attr('transform', `translate(${margin.left},0)`)
+                .call(d3.axisLeft().scale(yScale));
+
+            //Add label
+            yAxis
+                .append('text')
+                .attr('y', 30)
+                .attr('x', 20)
+                .style('stroke', 'black')
+                .text('Number of Accommodates');
+
+        
+            let xAxis = svg
+                .append('g')
+                .attr('transform', `translate(0,${height - margin.bottom})`)
+                .call(d3.axisBottom().scale(xScale));
+  
+            //Add label
+            xAxis
+                .append('text')
+                .attr('x', width - margin.left)
+                .attr('y', -10)
+                .style('stroke', 'black')
+                .text('Property Types');
+
+            //Draw bars
+            let bar = svg
+                .selectAll('rect')
+                .data(data)
+                .enter()
+                .append('rect')
+                .attr('x', d => xScale(d.property_type))
+                .attr('y', d => yScale(d.accommodations))
+                .attr('width', xScale.bandwidth())
+                .attr('height', d => 
+                    height - margin.bottom - yScale(d.accommodations))
+                .attr('fill', 'steelblue');
+
+            //Interaction
+            bar
+                .on('mouseover', function(d) {
+                d3.select(this)
+                .transition()
+                .delay(200)
+                .duration(1000)
+                .style('fill', 'red');
+                })
+
+    
+                .on('mouseout', function(d) {
+                d3.select(this)
+                .transition()
+                .delay(200)
+                .duration(1000)
+                .style('fill', 'steelblue');
+            });
+        });
+        </script>
     </div>
 
     <p>In general, houses was the property type with the highest maxium number of accomodates at around 16. 
